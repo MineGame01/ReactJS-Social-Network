@@ -2,20 +2,18 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import ReactDOM from "react-dom/client";
 import React from "react";
-import {createBrowserRouter, HashRouter, RouterProvider} from "react-router-dom";
+import {createHashRouter, RouterProvider} from "react-router-dom";
 import store from "./redux/store-redux";
 import {Provider} from "react-redux";
 import {routers} from './routers/routers'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-const router = createBrowserRouter(routers())
+const router = createHashRouter(routers())
 
 root.render(
     <Provider store={store}>
-        <HashRouter>
-            <RouterProvider router={router} />
-        </HashRouter>
+        <RouterProvider router={router} />
     </Provider>
 );
 
