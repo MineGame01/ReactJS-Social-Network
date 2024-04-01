@@ -1,0 +1,13 @@
+.myPost {
+    margin-top: 20px;
+}
+
+.myPost__panel {
+    background-color: #1e1f22;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.myPost__panel__body button {
+    margin-top: 20px;
+}

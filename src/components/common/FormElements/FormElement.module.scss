@@ -1,0 +1,31 @@
+.body {
+  &__textArea {
+    textarea,
+    input {
+      padding: 10px;
+      font-size: 17px;
+      width: 300px;
+      background-color: #1e1f22;
+      border: 2px solid white;
+      border-radius: 10px;
+      resize: none;
+      height: 20px;
+      color: white;
+      outline: none;
+      &:focus {
+        border: 2px solid red;
+        transition: 0.2s all ease;
+      }
+      &:hover {
+        border: 2px solid red;
+        transition: 0.2s all ease;
+      }
+    }
+  }
+  &__messageSpan {
+    margin-top: 10px;
+    span {
+      color: red;
+    }
+  }
+}

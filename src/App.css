@@ -1,0 +1,59 @@
+body {
+    background-color: black;
+}
+
+.app-wrapper {
+    width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas:
+    'header header'
+    'nav content';
+    grid-template-rows: 100px 1fr;
+    grid-template-columns: 2fr 10fr;
+    gap: 20px;
+    padding: 20px;
+    font-family: Roboto, sans-serif;
+}
+
+.app-wrapper-content {
+    grid-area: content;
+    color: white;
+}
+
+.textareaDefault {
+    padding: 10px;
+    font-size: 17px;
+    width: 90%;
+    background-color: #1e1f22;
+    border: 2px solid white;
+    border-radius: 10px;
+    resize: none;
+    height: 100px;
+    color: white;
+    outline: none;
+}
+
+.textareaDefault:focus {
+    border: 2px solid red;
+    transition: 0.2s all ease;
+}
+
+.textareaDefault:hover {
+    border: 2px solid red;
+    transition: 0.2s all ease;
+}
+
+.buttonDefault {
+    border-radius: 10px;
+    border: 2px solid white;
+    background-color: #1e1f22;
+    color: white;
+    padding: 10px 60px;
+    cursor: pointer;
+}
+
+.buttonDefault:hover {
+    border: 2px solid red;
+    transition: 0.2s all ease;
+}

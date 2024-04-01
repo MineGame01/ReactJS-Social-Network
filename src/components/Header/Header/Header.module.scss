@@ -1,0 +1,24 @@
+.header {
+    grid-area: header;
+    background-color: #1e1f22;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.header img {
+    width: 60px;
+}
+
+.login {
+    text-align: center;
+    font-size: 25px;
+    color: white;
+    float: right;
+    a {
+        color: white;
+    }
+}
+
+.exitButton {
+    float: right;
+}

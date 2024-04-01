@@ -1,0 +1,37 @@
+.dialogs {
+    background-color: #1e1f22;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.dialogs__dialogsGrid {
+    display: grid;
+    grid-template-columns: 5fr 5fr;
+}
+
+.dialogs__dialogsGrid__dialogsItem {
+    border-right: 2px solid white;
+}
+
+.dialogs__dialogsGrid__dialogsItem .dialog, a {
+    font-size: 20px;
+    line-height: 50px;
+    text-decoration: none;
+}
+
+.dialogs__dialogsGrid__messagesItem .message {
+    font-size: 17px;
+    line-height: 50px;
+}
+.dialogs__dialogsGrid__messagesItem .message_right {
+    float: right;
+    line-height: 0;
+}
+
+.dialogs__dialogsGrid__messagesItem {
+    padding: 20px;
+}
+
+.dialogs__newMessage button{
+    margin-top: 20px;
+}

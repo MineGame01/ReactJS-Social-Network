@@ -1,0 +1,24 @@
+.PageNumber {
+  overflow: hidden;
+  &__body {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.pageButton {
+  text-align: center;
+  padding: 10px 10px;
+}
+
+.pageButton:last-of-type {
+  margin-right: 0;
+}
+
+.active {
+  background-color: red;
+}
+
+.noneActive {
+  display: none;
+}
