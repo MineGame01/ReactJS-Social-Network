@@ -2,7 +2,7 @@
   "name": "reactjs-social-network",
   "version": "0.2.0",
   "private": true,
-  "homepage": "https://minegame01.github.io/ReactJSSocialNetwork",
+  "homepage": "https://minegame01.github.io/ReactJS-Social-Network",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.1",
     "@testing-library/jest-dom": "^5.17.0",
