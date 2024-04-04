@@ -14,7 +14,6 @@ const ProfileInfo = (props) => {
 
     //Check for availability
     const contacts = profileData ? profileData.contacts : null
-    const notContacts = 'No link!'
 
     //Local state
     const [editorModeStatus, editorModeStatusEditor] = useState(false)
@@ -145,16 +144,10 @@ const ProfileInfo = (props) => {
                     }
 
                     {viewContacts && <div className={Style.body__contactsMenu}>
-                        <div>Facebook: {contacts.facebook ? contacts.facebook : notContacts}</div>
-                        <div>Website: {contacts.website ? contacts.website : notContacts}</div>
-                        <div>Vk: {contacts.vk ? contacts.vk : notContacts}</div>
-                        <div>Twitter: {contacts.twitter ? contacts.twitter : notContacts}</div>
-                        <div>Instagram: {contacts.instagram ? contacts.instagram : notContacts}</div>
-                        <div>YouTube: {contacts.youtube ? contacts.youtube : notContacts}</div>
-                        <div>GitHUb: {contacts.github ? contacts.github : notContacts}</div>
-                        <div>MainLink: {contacts.mainLink ? contacts.mainLink : notContacts}</div>
+                        {Object.keys(contacts).map(key => {
+                            return <div>{key}: {contacts[key] || 'No Link'}</div>
+                        })}
                     </div>}
-
                 </div>
             </div>
     )
