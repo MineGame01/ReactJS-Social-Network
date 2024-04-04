@@ -11,7 +11,7 @@ const PostForm = (props) => {
             <Field
                 name={'newPost'}
                 component={TextArea}
-                placeholder={'Новий пост'}
+                placeholder={'New post'}
                 validate={[required, maxLeangth50]}
             />
         </div>

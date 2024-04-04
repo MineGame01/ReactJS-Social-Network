@@ -63,7 +63,7 @@ const LoginForm = props => {
             type={'button'}
             onClick={reset}
             className={'buttonDefault'}
-        >Очистить форму
+        >Reset form
         </button>
     </form>
 }

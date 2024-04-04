@@ -14,7 +14,7 @@ const ProfileInfo = (props) => {
 
     //Check for availability
     const contacts = profileData ? profileData.contacts : null
-    const notContacts = 'Нет ссылки!'
+    const notContacts = 'No link!'
 
     //Local state
     const [editorModeStatus, editorModeStatusEditor] = useState(false)
@@ -98,12 +98,12 @@ const ProfileInfo = (props) => {
                                         className={'buttonDefault'}
                                         style={{borderColor: editorModeProfile ? 'red' : 'white'}}
                                         onClick={() => editorModeProfileEditor(false)}
-                                    >Изменить профиль: Закрыть</button>
+                                    >Edit profile: Close</button>
                                     :
                                     <button
                                         className={'buttonDefault'}
                                         onClick={() => editorModeProfileEditor(true)}
-                                    >Изменить профиль: Открить</button>
+                                    >Edit profile: Open</button>
                             }
                             {
                                 editorModeProfile &&
@@ -115,36 +115,33 @@ const ProfileInfo = (props) => {
                     <img
                         className={Style.body__profileImg}
                         onDoubleClick={authLogin !== profileData.fullName ? null : applyEditModeImage}
-                        src={profileData.photos.large ?
-                            profileData.photos.large :
-                            'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg'
-                        }
-                        alt={!profileData.photos.large ?
-                            profileData.photos.large :
-                            'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg'
-                        }
+                        src={profileData.photos.large || 'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg'}
+                        alt={profileData.photos.large || 'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg'}
                     />
 
                     {editorModeImage && <EditorModeImageForm deapplyEditModeImage={deapplyEditModeImage}/>}
 
-                    <div className={Style.body__fullName}>{profileData.fullName ? profileData.fullName : 'Нет имени!'}</div>
+                    <div
+                        className={Style.body__fullName}>{profileData.fullName ? profileData.fullName : 'No name'}</div>
 
                     <div>{profileData.aboutMe}</div>
 
-                    <span onDoubleClick={authLogin !== profileData.fullName ? null : applyEditModeStatus}>{statusData}</span>
+                    <span
+                        onDoubleClick={authLogin !== profileData.fullName ? null : applyEditModeStatus}>{statusData}</span>
                     {editorModeStatus && <EditorModeFormRedux onSubmit={deapplyEditModeStatus}/>}
 
                     <div>
-                        <div>Ищет роботу: {profileData.lookingForAJob ? 'Да' : 'Нет'}</div>
-                        <div>Описание роботы: {!profileData.lookingForAJobDescription ? 'Нет описание' : profileData.lookingForAJobDescription}</div>
+                        <div>Looking for job: {profileData.lookingForAJob ? 'Yes' : 'No'}</div>
+                        <div>Description of
+                            work: {!profileData.lookingForAJobDescription ? 'No description' : profileData.lookingForAJobDescription}</div>
                     </div>
 
                     {
                         viewContacts ?
-                            <button className={'buttonDefault'} onClick={deapplyViewContacts}>Скрыть
-                                контакты</button> :
-                            <button className={'buttonDefault'} onClick={applyViewContacts}>Показать
-                                контакты</button>
+                            <button className={'buttonDefault'} onClick={deapplyViewContacts}>Hide
+                                contacts</button> :
+                            <button className={'buttonDefault'} onClick={applyViewContacts}>Show
+                                contacts</button>
                     }
 
                     {viewContacts && <div className={Style.body__contactsMenu}>

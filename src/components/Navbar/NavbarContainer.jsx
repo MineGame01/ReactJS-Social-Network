@@ -5,11 +5,5 @@ const stateToProps = (state) => ({
     urlData: state.urlData,
 })
 
-const dispatchToProps = (dispatch) => {
-    return {
-
-    }
-}
-
-const NavbarContainer = connect(stateToProps, dispatchToProps)(Navbar)
+const NavbarContainer = connect(stateToProps, null)(Navbar)
 export default NavbarContainer;

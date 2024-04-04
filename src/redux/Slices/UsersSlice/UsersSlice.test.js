@@ -1,4 +1,4 @@
-import UsersSlice, { follower } from './UsersSlice'
+import UsersSlice, {setFollower} from './UsersSlice'
 
 const initialState = {
     users: [
@@ -11,7 +11,7 @@ const initialState = {
 
 test('Followed user by id', () => {
     const id = 3
-    const action = follower({id: id})
+    const action = setFollower({id: id})
     expect(UsersSlice(initialState, action)).toEqual({
         users: initialState.users.map(user => {
             if (id === user.id) {

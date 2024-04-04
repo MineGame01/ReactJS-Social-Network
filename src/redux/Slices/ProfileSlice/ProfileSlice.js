@@ -5,19 +5,16 @@ const ProfileSlice = createSlice({
     name: 'profilePage',
     initialState: {
         postData: [
-            {id: 1, message: 'Hello its my first post', likeCount: 100, deslikeCount: 1},
-            {id: 2, message: 'HELLOOOOOOOOO', likeCount: 101, deslikeCount: 2},
-            {id: 3, message: 'name Klyuchka', likeCount: 1000, deslikeCount: 0},
-            {id: 4, message: 'Good Like', likeCount: 32, deslikeCount: 2}
+
         ],
         isLoadesProfile: false,
         profileData: null,
-        statusData: 'Нет статуса'
+        statusData: 'No status!'
     },
     reducers: {
         addPostAction(state, action) {
             const NewPost = {
-                id: 5,
+                id: 1,
                 message: action.payload.newPost,
                 likeCount: 0,
                 deslikeCount: 0
@@ -32,7 +29,7 @@ const ProfileSlice = createSlice({
                 array: state.postData,
                 nameIndexObject: 'id',
                 typeModify: 'likeCount',
-                toAddMore: true,
+                isAddMore: true,
                 toCompare: action.payload.id
             }
             state.postData = modifyArray(config)
@@ -42,7 +39,7 @@ const ProfileSlice = createSlice({
                 array: state.postData,
                 nameIndexObject: 'id',
                 typeModify: 'deslikeCount',
-                toAddMore: true,
+                isAddMore: true,
                 toCompare: action.payload.id
             }
             state.postData = modifyArray(config)

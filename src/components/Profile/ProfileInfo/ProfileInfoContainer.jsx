@@ -44,20 +44,18 @@ const ProfileInfoContainer = props => {
     </div>
 }
 
-const mapStateToProps = (state) => {
-    return {
-        //Загрущик страницы профиля
-        isLoadesProfile: getIsLoadesProfileState(state),
-        //Информация страницы профиля
-        profileData: getProfileDataState(state),
-        //Статус пользователя
-        statusData: getStatusState(state),
-        //Индификатор авторизованого пользователя
-        userID: getAuthDataState(state).id,
-        //Login авторизованого пользователя
-        authLogin: getAuthDataState(state).login
-    }
-}
+const mapStateToProps = (state) => ({
+    //Getting value to the profile page loader
+    isLoadesProfile: getIsLoadesProfileState(state),
+    //Getting all data profile page
+    profileData: getProfileDataState(state),
+    //Getting status user
+    statusData: getStatusState(state),
+    //Getting id to the authorization user
+    userID: getAuthDataState(state).id,
+    //Getting the 'login' value of an authorized user
+    authLogin: getAuthDataState(state).login
+})
 
 export default compose(
     connect(mapStateToProps, {

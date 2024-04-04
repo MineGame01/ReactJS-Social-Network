@@ -19,7 +19,7 @@ export const AuthLoginThunkCreator = LoginData => async dispatch => {
     dispatch(startLoades)
     //Sending data from the form login
     const responseData = await AuthAPI.AuthLogin(LoginData)
-    const messages = responseData.messages.length > 0 ? responseData.messages[0] : 'Незвестная ошибка!'
+    const messages = responseData.messages.length > 0 ? responseData.messages[0] : 'Unknown error!'
     if (responseData.resultCode === 0) {
         //If successful then sending request to login
         dispatch(userAuthThunkCreator())
@@ -46,7 +46,7 @@ export const AuthExitThunkCreator = () => async dispatch => {
         dispatch(stopLoades)
     } else {
         //If error, to return error
-        alert(`Ошибка выхода из аккаунта`)
+        alert(`Account logout error!`)
         dispatch(stopLoades)
     }
 }

@@ -20,7 +20,7 @@ const EditorModeStatusForm = props => {
         <div>
             <button
                 className={'buttonDefault'}
-            >Изменить</button>
+            >Edit</button>
         </div>
     </form>
 }

@@ -8,16 +8,16 @@ const EditorModeProfileForm = props => {
             name={'fullName'}
             component={Input}
             type={'text'}
-            placeholder={'Ваше имя?'}
+            placeholder={'Your name?'}
         />
         <Field
             name={'aboutMe'}
             component={Input}
             type={'text'}
-            placeholder={'Про себя'}
+            placeholder={'About myself'}
         />
         <div className={style.body__checkbox}>
-            <span className={style.body__checkbox__text}>Ищете роботу?</span><Field
+            <span className={style.body__checkbox__text}>Looking for a job?</span><Field
             name={'lookingForAJob'}
             component={Input}
             type={'checkbox'}
@@ -27,7 +27,7 @@ const EditorModeProfileForm = props => {
             name={'lookingForAJobDescription'}
             type={'text'}
             component={Input}
-            placeholder={'Описание роботы'}
+            placeholder={'Description of work'}
         />
         {props.nameContacts.map(name => {
             return <div>
@@ -41,7 +41,7 @@ const EditorModeProfileForm = props => {
         })}
         {props.error && <span style={{color: "red"}}>{props.error} </span>}
         <div>
-            <button className={'buttonDefault'}>Изменить</button>
+            <button className={'buttonDefault'}>Edit</button>
         </div>
     </form>
 }

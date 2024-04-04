@@ -14,10 +14,10 @@ export const putImageThunkCreator = ({file, userID, urlIdOrUserId}) => async dis
     if (data.resultCode === 0) {
         //If successful, get all profile data. Update profile data
         await dispatch(getProfileDataThunkCreator(urlIdOrUserId, userID))
-        alert('Изминение успешно')
+        alert('Change successful!')
     } else {
         //If error, return error
-        const messages = data.messages > 0 ? data.messages[0] : 'Неизвестная ошибка!'
+        const messages = data.messages > 0 ? data.messages[0] : 'Unknown error!'
         alert(messages)
     }
 }
@@ -37,9 +37,9 @@ export const getProfileDataThunkCreator = (urlId, userID) => async dispatch => {
     //Waiting response from API request
     const response = await Promise.all([ProfileData, StatusData])
     //Checks 'response' for not empty
-    !response ? alert('Ошибка загрузки даный пользователя') : dispatch(getProfileData({data: ProfileData}))
+    !response ? alert('Loading data user is the error!') : dispatch(getProfileData({data: ProfileData}))
     //Checks 'StatusData' for not empty
-    StatusData ? dispatch(getStatusData({statusData: StatusData})) : dispatch(getStatusData({statusData: 'Нет статуса'}))
+    StatusData ? dispatch(getStatusData({statusData: StatusData})) : dispatch(getStatusData({statusData: 'No status'}))
     //Stop preloader
     dispatch(stopLoaderProfile)
 }
@@ -56,18 +56,18 @@ export const putStatusDataThunkCreator = (newStatusData, urlIdOrUserId) => async
         if (dataStatus) {
             //If successful, update status
             dispatch(getStatusData({statusData: dataStatus}))
-            alert('Изминение успешно')
+            alert('Change successful!')
             //Stop preloader
             dispatch(stopLoaderProfile)
         } else {
             //If error, return error
-            alert('Ошибка изминение')
+            alert('Change successful!')
             //Stop preloader
             dispatch(stopLoaderProfile)
         }
     } else {
         //If error, return error
-        alert('Ошибка изминение')
+        alert('Change error!')
         //Stop preloader
         dispatch(stopLoaderProfile)
     }
@@ -82,12 +82,12 @@ export const putProfileDataThunkCreator = (props) => async dispatch => {
     const data = await ProfileAPI.putProfileData(object)
     if (data.resultCode === 0) {
         await dispatch(getProfileDataThunkCreator(urlIdOrUserId, userID))
-        alert('Изминение успешно!')
+        alert('Change successful!')
         //Stop preloader
         dispatch(stopLoaderProfile)
     } else {
         dispatch(stopSubmit('EditProfile', {_error: data.messages}))
-        alert('Ошибка изминение!')
+        alert('Change error!')
         //Stop preloader
         dispatch(stopLoaderProfile)
     }

@@ -1,8 +1,8 @@
 export const required = value => {
-    return value ? undefined : 'Поле не может быть пустым'
+    return value ? undefined : 'Field cannot be empty!'
 }
 
 export const maxLeangth = (maxLeangth) => (value) => {
     if (value && value.length < maxLeangth) return undefined
-    else return `Максимальная довжина текста ${maxLeangth}`
+    else return `Maximum text length ${maxLeangth}!`
 }

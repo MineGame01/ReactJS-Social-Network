@@ -12,7 +12,6 @@ const MessageSlice = createSlice({
         dialogsData: [
             {id: 1, name: 'Misha'},
             {id: 2, name: 'Klyuchka'},
-            {id: 3, name: 'Andrey'}
         ],
     },
     reducers: {

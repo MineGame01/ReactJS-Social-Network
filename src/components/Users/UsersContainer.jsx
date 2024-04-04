@@ -46,8 +46,6 @@ class UsersClass extends React.Component {
         getUserThunkCreator(number, SearchText)
     }
 
-    Loaders = (props) => this.props.isLoades ? <Loader/> : props
-
     render() {
         let NumberPage = Math.ceil(this.props.totalCount / this.props.countPage)
         let PageNumber = []
@@ -68,11 +66,11 @@ class UsersClass extends React.Component {
                     SearchText={this.props.SearchText}
                     updateSearchText={this.updateSearchText}
                 />
-                {this.Loaders(<Users
+                {this.props.isLoades ? <Loader /> : <Users
                     users={this.props.users}
                     isFollowing={this.props.isFollowing}
                     toggleFollowerStatus={this.props.toggleFollowerStatus}
-                />)}
+                />}
             </div>
         )
     }
