@@ -15,28 +15,28 @@ import {
 } from "../../../redux/Selectors/Selectors";
 import {useParams} from "react-router-dom";
 import Loader from "../../Loader/Loader";
+import {setUrlIdOrUserId} from "../../../redux/Slices/ProfileSlice/ProfileSlice";
 
 const ProfileInfoContainer = props => {
     const {
-        profileData, userID,
-        statusData, putStatusDataThunkCreator,
-        putImageThunkCreator, putProfileDataThunkCreator,
-        authLogin, getProfileDataThunkCreator
+        profileData, statusData,
+        putStatusDataThunkCreator, putImageThunkCreator,
+        putProfileDataThunkCreator, authLogin,
+        getProfileDataThunkCreator, setUrlIdOrUserId,
+        userID
     } = props
 
     const params = useParams()
     useEffect(() => {
-        getProfileDataThunkCreator(params.userId, userID)
-    }, [getProfileDataThunkCreator, params.userId, userID])
+        setUrlIdOrUserId({id: params.userId || userID})
+        getProfileDataThunkCreator()
+    }, [getProfileDataThunkCreator, params.userId, userID, setUrlIdOrUserId])
 
-    const urlIdOrUserId = Number(params.userId) ? Number(params.userId) : userID
     return <div>
         {props.isLoadesProfile ? <Loader /> : <ProfileInfo
             profileData={profileData}
             statusData={statusData}
             putStatusDataThunkCreator={putStatusDataThunkCreator}
-            userID={userID}
-            urlIdOrUserId={urlIdOrUserId}
             putImageThunkCreator={putImageThunkCreator}
             putProfileDataThunkCreator={putProfileDataThunkCreator}
             authLogin={authLogin}
@@ -62,7 +62,8 @@ export default compose(
         getProfileDataThunkCreator,
         putStatusDataThunkCreator,
         putImageThunkCreator,
-        putProfileDataThunkCreator
+        putProfileDataThunkCreator,
+        setUrlIdOrUserId
     }),
     WithAuthRedirect
 )(ProfileInfoContainer)

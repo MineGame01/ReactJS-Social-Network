@@ -6,8 +6,7 @@ import EditorModeProfileForm from "./EditorModeProfileForm/EditorModeProfileForm
 
 const ProfileInfo = (props) => {
     const {
-        profileData, userID,
-        urlIdOrUserId, putProfileDataThunkCreator,
+        profileData, putProfileDataThunkCreator,
         authLogin, statusData,
         putImageThunkCreator, putStatusDataThunkCreator
     } = props
@@ -30,7 +29,7 @@ const ProfileInfo = (props) => {
     const deapplyEditModeStatus = (value) => {
         editorModeStatusEditor(false)
         if (value.editorInput !== statusData) {
-            putStatusDataThunkCreator(value.editorInput, urlIdOrUserId)
+            putStatusDataThunkCreator(value.editorInput)
         }
     }
 
@@ -42,7 +41,7 @@ const ProfileInfo = (props) => {
     //Hide file selection image
     const deapplyEditModeImage = event => {
         editorModeImageEditor(false)
-        putImageThunkCreator({file: event.target.files[0], userID, urlIdOrUserId})
+        putImageThunkCreator({file: event.target.files[0]})
     }
 
     //Show view contacts
@@ -57,7 +56,7 @@ const ProfileInfo = (props) => {
 
     //Object for profile update
     const updateProfile = object => {
-        putProfileDataThunkCreator({object, urlIdOrUserId, userID})
+        putProfileDataThunkCreator({object})
     }
     return (
         !profileData ? <></> :
