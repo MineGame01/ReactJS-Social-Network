@@ -29,15 +29,13 @@ const EditorModeProfileForm = props => {
             component={Input}
             placeholder={'Description of work'}
         />
-        {props.nameContacts.map(name => {
-            return <div>
-                <Field
-                    name={name}
-                    component={Input}
-                    className={'textareaDefault'}
-                    placeholder={name}
-                />
-            </div>
+        {Object.keys(props.contacts).map(key => {
+            return <Field
+                name={'contacts.' + key}
+                component={Input}
+                className={'textareaDefault'}
+                placeholder={key}
+            />
         })}
         {props.error && <span style={{color: "red"}}>{props.error} </span>}
         <div>
@@ -46,4 +44,4 @@ const EditorModeProfileForm = props => {
     </form>
 }
 
-export default reduxForm({form: 'EditProfile'})(EditorModeProfileForm)
+export default reduxForm({form: 'EditProfile', enableReinitialize: true})(EditorModeProfileForm)

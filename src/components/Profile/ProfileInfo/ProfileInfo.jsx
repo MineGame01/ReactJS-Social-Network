@@ -56,33 +56,7 @@ const ProfileInfo = (props) => {
     }
 
     //Object for profile update
-    const updateProfile = value => {
-        const {
-            fullName, aboutMe, lookingForAJob,
-            lookingForAJobDescription, github, vk,
-            facebook, instagram, twitter,
-            website, youtube, mainLink
-        } = value
-        const checkedForAvailability = ({checkedValue, defaultValue}) => {
-            return checkedValue ? checkedValue : defaultValue
-        }
-        const object = {
-            userId: userID,
-            fullName: checkedForAvailability(fullName, profileData.fullName),
-            aboutMe: checkedForAvailability(aboutMe, profileData.aboutMe),
-            lookingForAJob: checkedForAvailability(lookingForAJob, profileData.lookingForAJob),
-            lookingForAJobDescription: checkedForAvailability(lookingForAJobDescription, profileData.lookingForAJobDescription),
-            contacts: {
-                github: checkedForAvailability(github, profileData.contacts.github),
-                vk: checkedForAvailability(vk, profileData.contacts.vk),
-                facebook: checkedForAvailability(facebook, profileData.contacts.facebook),
-                instagram: checkedForAvailability(instagram, profileData.contacts.instagram),
-                twitter: checkedForAvailability(twitter, profileData.contacts.twitter),
-                website: checkedForAvailability(website, profileData.contacts.website),
-                youtube: checkedForAvailability(youtube, profileData.contacts.youtube),
-                mainLink: checkedForAvailability(mainLink, profileData.contacts.mainLink)
-            }
-        }
+    const updateProfile = object => {
         putProfileDataThunkCreator({object, urlIdOrUserId, userID})
     }
     return (
@@ -106,7 +80,7 @@ const ProfileInfo = (props) => {
                             }
                             {
                                 editorModeProfile &&
-                                <EditorModeProfileForm nameContacts={Object.keys(contacts)} onSubmit={updateProfile}/>
+                                <EditorModeProfileForm contacts={contacts} initialValues={profileData} onSubmit={updateProfile}/>
                             }
                         </div>
                     }
