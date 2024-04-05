@@ -2,10 +2,6 @@ import React from 'react'
 import LoginFormReduxForm from "./LoginForm/LoginForm";
 
 class Login extends React.Component {
-    componentDidMount() {
-        this.props.getUrlCaptchaThunkCreator()
-    }
-
     onSubmit = (values) => {
         this.props.AuthLoginThunkCreator(values)
     }

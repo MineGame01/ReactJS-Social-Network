@@ -24,6 +24,11 @@ export const AuthLoginThunkCreator = LoginData => async dispatch => {
         //If successful then sending request to login
         dispatch(userAuthThunkCreator())
         dispatch(stopLoades)
+    } else if (responseData.resultCode === 10) {
+        //If response code equals 10, then we get url captcha and sending error to the form
+        dispatch(getUrlCaptchaThunkCreator())
+        dispatch(stopSubmit('login', {_error: messages}))
+        dispatch(stopLoades)
     } else {
         //If there is an error, send the error to the login form
         dispatch(stopSubmit('login', {_error: messages}))

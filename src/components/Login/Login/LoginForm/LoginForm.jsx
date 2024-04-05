@@ -36,7 +36,7 @@ const LoginForm = props => {
         </div>
         <div>
             <div>
-                {error === 'Incorrect anti-bot symbols' && <div>
+                {url && <div>
                     <img src={url} alt={url}/>
                     <div>
                         <Field
