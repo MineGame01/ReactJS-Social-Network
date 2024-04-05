@@ -8,6 +8,7 @@ const Mypost = (props) => {
     const {postData, deslikeUp, likeUp, addPostAction} = props
     let postElements = postData.map(post =>
         <Post
+            key={post.id}
             id={post.id}
             massages={post.message}
             like={post.likeCount}

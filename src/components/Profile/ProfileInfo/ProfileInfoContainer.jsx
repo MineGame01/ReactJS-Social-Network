@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import ProfileInfo from "./ProfileInfo";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {

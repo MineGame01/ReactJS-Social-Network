@@ -1,8 +1,8 @@
 import {Field, reduxForm} from "redux-form";
-import {Input} from "../../../common/FormElements/FormElement";
-import style from './EditorModeProfileForm.module.scss'
+import {Input} from "../../../../../common/FormElements/FormElement";
+import style from './ProfileEditorForm.module.scss'
 
-const EditorModeProfileForm = props => {
+const ProfileEditorForm = props => {
     return <form onSubmit={props.handleSubmit} className={style.body}>
         <Field
             name={'fullName'}
@@ -29,8 +29,9 @@ const EditorModeProfileForm = props => {
             component={Input}
             placeholder={'Description of work'}
         />
-        {Object.keys(props.contacts).map(key => {
+        {Object.keys(props.profileData.contacts).map(key => {
             return <Field
+                key={key}
                 name={'contacts.' + key}
                 component={Input}
                 className={'textareaDefault'}
@@ -44,4 +45,4 @@ const EditorModeProfileForm = props => {
     </form>
 }
 
-export default reduxForm({form: 'EditProfile', enableReinitialize: true})(EditorModeProfileForm)
+export default reduxForm({form: 'EditProfile', enableReinitialize: true})(ProfileEditorForm)
