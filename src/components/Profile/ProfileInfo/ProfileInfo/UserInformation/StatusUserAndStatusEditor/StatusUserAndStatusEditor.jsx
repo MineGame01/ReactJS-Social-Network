@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import EditorModeFormRedux from "./StatusEditorForm/StatusEditorForm";
+import style from './StatusUserAndStatusEditor.module.scss'
 
 const StatusUserAndStatusEditor = ({authLogin, profileData, putStatusDataThunkCreator, statusData, ...props}) => {
     //Local state
@@ -17,11 +18,20 @@ const StatusUserAndStatusEditor = ({authLogin, profileData, putStatusDataThunkCr
             putStatusDataThunkCreator(value.editorInput)
         }
     }
-    return <div>
-        <span
-            onDoubleClick={authLogin !== profileData.fullName ? null : applyEditModeStatus}
-        >{statusData}</span>
-        {isEditStatus && <EditorModeFormRedux initialValues={{editorInput: statusData}} onSubmit={deapplyEditModeStatus}/>}
+    return <div className={style.body}>
+        <button
+            onClick={authLogin !== profileData.fullName ? null : applyEditModeStatus}
+            className={style.body__helpButton}
+        >
+            <span
+                style={{
+                    color: isEditStatus ? 'red' : 'white',
+                    cursor: authLogin !== profileData.fullName ? 'text' : 'pointer'
+                }}
+            ><b>Status: </b>{statusData}</span>
+        </button>
+        {isEditStatus &&
+            <EditorModeFormRedux initialValues={{editorInput: statusData}} onSubmit={deapplyEditModeStatus}/>}
     </div>
 }
 

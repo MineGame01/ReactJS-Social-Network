@@ -1,3 +1,25 @@
 .profileImg {
   max-width: 300px;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+.body {
+  button {
+    background: none;
+    padding: 0;
+    border: none;
+  }
+}
+
+.buttonHover {
+  cursor: pointer;
+  &:hover .profileImg {
+    border-color: red;
+    transition: 0.2s all ease;
+  }
+  &:focus .profileImg {
+    border-color: red;
+    transition: 0.2s all ease;
+  }
 }

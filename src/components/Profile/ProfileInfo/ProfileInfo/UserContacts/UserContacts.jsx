@@ -17,7 +17,7 @@ const UserContacts = ({profileData, ...props}) => {
     return <div>
         {
             isViewContacts ?
-                <button className={'buttonDefault'} onClick={deapplyViewContacts}>Hide
+                <button style={{borderColor: isViewContacts ? 'red' : 'white'}} className={'buttonDefault'} onClick={deapplyViewContacts}>Hide
                     contacts</button> :
                 <button className={'buttonDefault'} onClick={applyViewContacts}>Show
                     contacts</button>
@@ -25,7 +25,7 @@ const UserContacts = ({profileData, ...props}) => {
 
         {isViewContacts && <div className={style.contactsMenu}>
             {Object.keys(profileData.contacts).map(key => {
-                return <div key={key}>{key}: {profileData.contacts[key] || 'No Link'}</div>
+                return <div key={key}><b>{key}:</b> {profileData.contacts[key] ? <a href={profileData.contacts[key]}>{profileData.contacts[key]}</a> : 'No link!'}</div>
             })}
         </div>}
     </div>

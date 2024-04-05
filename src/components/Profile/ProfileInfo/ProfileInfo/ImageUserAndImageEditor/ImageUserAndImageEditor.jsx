@@ -17,13 +17,17 @@ const ImageUserAndImageEditor = ({authLogin, profileData, putImageThunkCreator, 
         putImageThunkCreator({file: event.target.files[0]})
     }
 
-    return <div>
-        <img
-            className={style.profileImg}
-            onDoubleClick={authLogin !== profileData.fullName ? null : applyEditModeImage}
-            src={profileData.photos.large || 'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg'}
-            alt={profileData.photos.large || 'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg'}
-        />
+    return <div className={style.body}>
+        <button
+            onClick={authLogin !== profileData.fullName ? null : applyEditModeImage}
+            className={authLogin !== profileData.fullName ? null : style.buttonHover}
+        >
+            <img
+                className={style.profileImg}
+                src={profileData.photos.large || 'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg'}
+                alt={profileData.photos.large || 'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg'}
+            />
+        </button>
 
         {isEditImage && <ImageEditorForm deapplyEditModeImage={deapplyEditModeImage}/>}
     </div>

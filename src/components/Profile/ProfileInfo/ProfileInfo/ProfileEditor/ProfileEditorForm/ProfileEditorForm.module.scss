@@ -1,19 +1,19 @@
 .body {
+  position: absolute;
+  transform: translateX(-80px);
   background-color: #1e1f22;
   border-radius: 10px;
   padding: 10px;
   margin-top: 10px;
   box-shadow: 0px 0px 42px 0px rgba(0,0,0,0.75);
-  input[type='checkbox']{
-
+  button {
+    width: 100%;
   }
   &__checkbox {
     display: flex;
     align-items: center;
     justify-content: left;
-    &__text {
-
-    }
+    &__text {}
     input[type='checkbox'] {
       width: 20px;
     }

@@ -4,6 +4,14 @@
   padding: 10px;
   div {
     margin-top: 10px;
+    a {
+      line-height: 10px;
+      color: white;
+      &:hover {
+        color: red;
+        transition: 0.2s all ease;
+      }
+    }
     &:first-of-type {
       margin-top: 0;
     }
