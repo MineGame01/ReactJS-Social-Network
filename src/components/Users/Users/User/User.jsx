@@ -13,8 +13,8 @@ const User = ({id, followedOnUser, ...props}) => {
                 <div className={Style.logo}>
                     <NavLink to={'/profile/' + id}>
                         <img
-                            src={props.img !== null ? props.img : 'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg'}
-                            alt={props.img}
+                            src={props.img || 'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg'}
+                            alt={props.img || 'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg'}
                         />
                     </NavLink>
                     {props.followed ?
@@ -22,12 +22,12 @@ const User = ({id, followedOnUser, ...props}) => {
                             className='buttonDefault'
                             onClick={followedOnUserFunction}
                             disabled={props.isFollowing.some(el => el === id)}
-                        >Отписатися</button>
+                        >Unsubscribe</button>
                         : <button
                             className='buttonDefault'
                             onClick={followedOnUserFunction}
                             disabled={props.isFollowing.some(el => el === id)}
-                        >Підписатися</button>}
+                        >Subscribe</button>}
                 </div>
                 <div className={Style.info}>
                     <div className={Style.name}>{props.name}</div>

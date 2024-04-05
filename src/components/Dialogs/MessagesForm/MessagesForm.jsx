@@ -18,7 +18,7 @@ const MessagesForm = props => {
             <button
                 className='buttonDefault'
             >
-                Отправить
+                Send
             </button>
         </div>
     </form>

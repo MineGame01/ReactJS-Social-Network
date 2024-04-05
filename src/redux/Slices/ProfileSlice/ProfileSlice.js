@@ -4,55 +4,67 @@ import {modifyArray} from "../../../Utils/modifyArray/modifyArray";
 const ProfileSlice = createSlice({
     name: 'profilePage',
     initialState: {
-        postData: [
-            {id: 1, message: 'Hello its my first post', likeCount: 100, deslikeCount: 1},
-            {id: 2, message: 'HELLOOOOOOOOO', likeCount: 101, deslikeCount: 2},
-            {id: 3, message: 'name Klyuchka', likeCount: 1000, deslikeCount: 0},
-            {id: 4, message: 'Good Like', likeCount: 32, deslikeCount: 2}
-        ],
+        //Post Storage
+        postData: [],
+        //Is profile page loading?
         isLoadesProfile: false,
+        //Profile data
         profileData: null,
-        statusData: 'Нет статуса'
+        //Status user
+        statusData: 'No status!',
+        //This is id authorized user? or id other user?
+        urlIdOrUserId: null
     },
     reducers: {
+        //Installs id authorized user or id other user
+        setUrlIdOrUserId(state, action) {
+            state.urlIdOrUserId = action.payload.id
+        },
+        //Adding new post to array
         addPostAction(state, action) {
             const NewPost = {
-                id: 5,
+                id: 1,
                 message: action.payload.newPost,
                 likeCount: 0,
                 deslikeCount: 0
             }
             state.postData.push(NewPost)
         },
+        //Deleting post by id
         deletePostByID(state, action) {
             state.postData = state.postData.filter(el => el.id !== action.payload.id)
         },
+        //Adding one like to the post by id
         likeUp(state, action) {
             const config = {
                 array: state.postData,
                 nameIndexObject: 'id',
                 typeModify: 'likeCount',
-                toAddMore: true,
+                isAddMore: true,
                 toCompare: action.payload.id
             }
             state.postData = modifyArray(config)
         },
+        //Decrease one like to the post by id
         deslikeUp(state, action) {
             const config = {
                 array: state.postData,
                 nameIndexObject: 'id',
                 typeModify: 'deslikeCount',
-                toAddMore: true,
+                isAddMore: true,
                 toCompare: action.payload.id
             }
             state.postData = modifyArray(config)
         },
+        //Getting profile data
         getProfileData(state, action) {
             state.profileData = action.payload.data
         },
+        //Is profile page loading?
         toLoadesProfile(state, action) {
             state.isLoadesProfile = action.payload.boolean
         },
+        //Getting user status data
         getStatusData(state, action) {
             state.statusData = action.payload.statusData
         }
@@ -66,6 +78,7 @@ export const {
     getProfileData,
     toLoadesProfile,
     getStatusData,
-    deletePostByID
+    deletePostByID,
+    setUrlIdOrUserId
 } = ProfileSlice.actions
 export default ProfileSlice.reducer

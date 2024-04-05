@@ -1,11 +1,12 @@
 import React from 'react'
 import {Field, reduxForm} from "redux-form";
-import {Input} from "../../../common/FormElements/FormElement";
-import {maxLeangth, required} from "../../../../Utils/Validation/Validation";
+import {Input} from "../../../../../../common/FormElements/FormElement";
+import {maxLeangth, required} from "../../../../../../../Utils/Validation/Validation";
 
+//Max length text 300
 const maxLeangth300 = maxLeangth(300)
 
-const EditorModeStatusForm = props => {
+const StatusEditorForm = props => {
     return <form onSubmit={props.handleSubmit}>
         <div>
             <Field
@@ -20,11 +21,11 @@ const EditorModeStatusForm = props => {
         <div>
             <button
                 className={'buttonDefault'}
-            >Изменить</button>
+            >Edit</button>
         </div>
     </form>
 }
 
-const EditorModeFormRedux = reduxForm({form: 'editorModeForm'})(EditorModeStatusForm)
+const EditorModeFormRedux = reduxForm({form: 'editorModeForm', enableReinitialize: true})(StatusEditorForm)
 
 export default EditorModeFormRedux

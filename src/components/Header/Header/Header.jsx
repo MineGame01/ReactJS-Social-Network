@@ -19,7 +19,7 @@ const Header = (props) => {
                                 disabled={isLoadesAuth}
                                 onClick={() => AuthExitThunkCreator()}
                                 className={'buttonDefault'}
-                            >Вийти</button> : ' '
+                            >Log out</button> : ' '
                     }
                 </div>
             </div>

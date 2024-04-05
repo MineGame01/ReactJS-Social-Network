@@ -30,6 +30,6 @@ export const ProfileAPI = {
             .then(response => response.data)
     },
     putProfileData(object) {
-        return defaultConfig.put(``, {...object}).then(response => response.data)
+        return defaultConfig.put(``, object).then(response => response.data)
     }
 }

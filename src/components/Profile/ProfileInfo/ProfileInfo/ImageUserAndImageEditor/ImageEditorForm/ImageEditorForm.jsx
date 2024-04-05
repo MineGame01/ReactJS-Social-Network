@@ -1,7 +1,6 @@
 import React from 'react'
 
-const EditorModeImageForm = props => {
-    const {deapplyEditModeImage} = props
+const ImageEditorForm = ({deapplyEditModeImage, ...props}) => {
     return <div>
         <input
             type={'file'}
@@ -12,4 +11,4 @@ const EditorModeImageForm = props => {
     </div>
 }
 
-export default EditorModeImageForm
+export default ImageEditorForm

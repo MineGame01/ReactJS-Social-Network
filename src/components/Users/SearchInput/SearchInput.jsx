@@ -5,7 +5,7 @@ const SearchInput = props => {
     const {PageNumber, updatePageNumber, SearchText, updateSearchText} = props
     return <div className={styles.body}>
         <div>
-            <span>Сторінки: </span>
+            <span>Pages: </span>
             <input
                 className={'textareaDefault'}
                 type="number"
@@ -14,7 +14,7 @@ const SearchInput = props => {
             />
         </div>
         <div>
-            <span>Найти по імя: </span>
+            <span>Search to the name: </span>
             <input
                 className={'textareaDefault'}
                 type="text"
