@@ -26,6 +26,6 @@ const StatusEditorForm = props => {
     </form>
 }
 
-const EditorModeFormRedux = reduxForm({form: 'editorModeForm'})(StatusEditorForm)
+const EditorModeFormRedux = reduxForm({form: 'editorModeForm', enableReinitialize: true})(StatusEditorForm)
 
 export default EditorModeFormRedux

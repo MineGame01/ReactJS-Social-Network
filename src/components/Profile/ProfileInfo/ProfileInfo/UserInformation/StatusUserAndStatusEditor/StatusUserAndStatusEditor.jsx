@@ -21,7 +21,7 @@ const StatusUserAndStatusEditor = ({authLogin, profileData, putStatusDataThunkCr
         <span
             onDoubleClick={authLogin !== profileData.fullName ? null : applyEditModeStatus}
         >{statusData}</span>
-        {isEditStatus && <EditorModeFormRedux onSubmit={deapplyEditModeStatus}/>}
+        {isEditStatus && <EditorModeFormRedux initialValues={{editorInput: statusData}} onSubmit={deapplyEditModeStatus}/>}
     </div>
 }
 
