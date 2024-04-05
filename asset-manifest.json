@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/ReactJS-Social-Network/static/css/main.c1695c83.css",
-    "main.js": "/ReactJS-Social-Network/static/js/main.a8a20382.js",
+    "main.js": "/ReactJS-Social-Network/static/js/main.c5d57b75.js",
     "static/js/453.643dae02.chunk.js": "/ReactJS-Social-Network/static/js/453.643dae02.chunk.js",
     "static/css/646.47e0dfe7.chunk.css": "/ReactJS-Social-Network/static/css/646.47e0dfe7.chunk.css",
-    "static/js/646.184de0a6.chunk.js": "/ReactJS-Social-Network/static/js/646.184de0a6.chunk.js",
+    "static/js/646.11a3054f.chunk.js": "/ReactJS-Social-Network/static/js/646.11a3054f.chunk.js",
     "static/css/415.6bb2e094.chunk.css": "/ReactJS-Social-Network/static/css/415.6bb2e094.chunk.css",
     "static/js/415.86b133e5.chunk.js": "/ReactJS-Social-Network/static/js/415.86b133e5.chunk.js",
     "static/media/Spin-1s-200px.png": "/ReactJS-Social-Network/static/media/Spin-1s-200px.ce9ba859b19a0159a888.png",
     "index.html": "/ReactJS-Social-Network/index.html",
     "main.c1695c83.css.map": "/ReactJS-Social-Network/static/css/main.c1695c83.css.map",
-    "main.a8a20382.js.map": "/ReactJS-Social-Network/static/js/main.a8a20382.js.map",
+    "main.c5d57b75.js.map": "/ReactJS-Social-Network/static/js/main.c5d57b75.js.map",
     "453.643dae02.chunk.js.map": "/ReactJS-Social-Network/static/js/453.643dae02.chunk.js.map",
     "646.47e0dfe7.chunk.css.map": "/ReactJS-Social-Network/static/css/646.47e0dfe7.chunk.css.map",
-    "646.184de0a6.chunk.js.map": "/ReactJS-Social-Network/static/js/646.184de0a6.chunk.js.map",
+    "646.11a3054f.chunk.js.map": "/ReactJS-Social-Network/static/js/646.11a3054f.chunk.js.map",
     "415.6bb2e094.chunk.css.map": "/ReactJS-Social-Network/static/css/415.6bb2e094.chunk.css.map",
     "415.86b133e5.chunk.js.map": "/ReactJS-Social-Network/static/js/415.86b133e5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c1695c83.css",
-    "static/js/main.a8a20382.js"
+    "static/js/main.c5d57b75.js"
   ]
 }
