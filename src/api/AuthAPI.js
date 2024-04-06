@@ -1,20 +1,12 @@
-import axios from "axios";
-
-const defaultConfig = axios.create({
-    baseURL: 'https://social-network.samuraijs.com/api/1.0/auth/',
-    withCredentials: true,
-    headers: {
-        "API-KEY": "1f84f6e8-b356-4dde-b9c0-fd88b14d48cd"
-    },
-})
+import {defaultConfig} from "./defaultConfigAPI";
 
 export const AuthAPI = {
     UserAuth() {
-        return defaultConfig.get(`me`)
+        return defaultConfig.get(`/auth/me`)
             .then(response => response.data)
     },
     AuthLogin(LoginData) {
-        return defaultConfig.post(`login`, {
+        return defaultConfig.post(`/auth/login`, {
             email: LoginData.email,
             password: LoginData.password,
             rememberMe: LoginData.rememberMe,
@@ -24,7 +16,7 @@ export const AuthAPI = {
             .then(response => response.data)
     },
     AuthExit() {
-        return defaultConfig.delete(`login`)
+        return defaultConfig.delete(`/auth/login`)
             .then(response => response.data)
     }
 }

@@ -1,28 +1,20 @@
-import axios from "axios";
-
-const defaultConfig = axios.create({
-    baseURL: 'https://social-network.samuraijs.com/api/1.0/profile/',
-    withCredentials: true,
-    headers: {
-        "API-KEY": "1f84f6e8-b356-4dde-b9c0-fd88b14d48cd"
-    },
-})
+import {defaultConfig} from "./defaultConfigAPI";
 
 export const ProfileAPI = {
     getProfile(userID) {
-        return defaultConfig.get(`${userID}`)
+        return defaultConfig.get(`/profile/${userID}`)
             .then(response => response.data)
     },
     getStatus(userID) {
-        return defaultConfig.get(`status/${userID}`)
+        return defaultConfig.get(`/profile/status/${userID}`)
             .then(response => response.data)
     },
     putStatus(status) {
-        return defaultConfig.put(`status`, {status})
+        return defaultConfig.put(`/profile/status`, {status})
             .then(response => response.data)
     },
     putImage(fileImage) {
-        return defaultConfig.put(`photo`, {image: fileImage}, {
+        return defaultConfig.put(`/profile/photo`, {image: fileImage}, {
             headers: {
                 "Content-Type": "multipart/form-data"
             }
@@ -30,6 +22,6 @@ export const ProfileAPI = {
             .then(response => response.data)
     },
     putProfileData(object) {
-        return defaultConfig.put(``, object).then(response => response.data)
+        return defaultConfig.put(`/profile`, object).then(response => response.data)
     }
 }
