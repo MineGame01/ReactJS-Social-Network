@@ -7,7 +7,6 @@ const LoginForm = props => {
     const {
         handleSubmit, error,
         url, isLoadesAuth,
-        reset
     } = props
     return <form onSubmit={handleSubmit} className={style.body}>
         <div>
@@ -59,11 +58,8 @@ const LoginForm = props => {
             className={'buttonDefault'}
         >Login
         </button>
-        <button
-            type={'button'}
-            onClick={reset}
-            className={'buttonDefault'}
-        >Reset form
+        <button className={'buttonDefault'} type={'button'}>
+            <a href="https://social-network.samuraijs.com/signUp" style={{color: 'white'}}>Registration</a>
         </button>
     </form>
 }

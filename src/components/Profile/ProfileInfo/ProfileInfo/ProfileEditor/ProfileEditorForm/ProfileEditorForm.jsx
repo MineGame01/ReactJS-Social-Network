@@ -34,7 +34,6 @@ const ProfileEditorForm = props => {
                 key={key}
                 name={'contacts.' + key}
                 component={Input}
-                className={'textareaDefault'}
                 placeholder={key}
             />
         })}

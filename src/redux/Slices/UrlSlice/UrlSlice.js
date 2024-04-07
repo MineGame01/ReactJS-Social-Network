@@ -5,7 +5,7 @@ const UrlSlice = createSlice({
     initialState: {
         url: [
             {id: 1, name: 'Profile', url: '/profile/'},
-            {id: 2, name: 'Messages', url: '/messages/'},
+            {id: 2, name: 'Messages', url: '/dialogs/'},
             {id: 3, name: 'Users', url: '/users/'},
             {id: 4, name: 'News', url: '/news/'},
             {id: 5, name: 'Music', url: '/music/'},

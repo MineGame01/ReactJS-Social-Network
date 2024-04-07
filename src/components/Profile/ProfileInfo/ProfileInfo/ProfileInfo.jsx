@@ -9,7 +9,8 @@ const ProfileInfo = (props) => {
     const {
         profileData, putProfileDataThunkCreator,
         authLogin, statusData,
-        putImageThunkCreator, putStatusDataThunkCreator
+        putImageThunkCreator, putStatusDataThunkCreator,
+        isChatting, startChattingUserByIdThunkCreator
     } = props
     return (
         !profileData ? <></> :
@@ -35,7 +36,10 @@ const ProfileInfo = (props) => {
                     />
 
                     <UserContacts
+                        authLogin={authLogin}
                         profileData={profileData}
+                        isChatting={isChatting}
+                        startChattingUserByIdThunkCreator={startChattingUserByIdThunkCreator}
                     />
                 </div>
             </div>

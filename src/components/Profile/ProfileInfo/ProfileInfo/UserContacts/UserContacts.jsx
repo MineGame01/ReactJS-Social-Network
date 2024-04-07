@@ -1,33 +1,39 @@
 import React, {useState} from 'react'
 import style from './UserContacts.module.scss'
 
-const UserContacts = ({profileData, ...props}) => {
-    //Local state
-    const [isViewContacts, isChangeViewContacts] = useState(false)
+const UserContacts = (props) => {
+    const {
+        profileData, authLogin,
+        isChatting, startChattingUserByIdThunkCreator
+    } = props
 
-    //Show view contacts
-    const applyViewContacts = () => {
-        isChangeViewContacts(true)
+    const [isViewContacts, isChangeViewContacts] = useState(false) //Local state
+
+    const onViewContacts = () => { //Opening and close view contacts
+        isChangeViewContacts(!isViewContacts)
     }
 
-    //Hide view contacts
-    const deapplyViewContacts = () => {
-        isChangeViewContacts(false)
-    }
     return <div>
         {
             isViewContacts ?
-                <button style={{borderColor: isViewContacts ? 'red' : 'white'}} className={'buttonDefault'} onClick={deapplyViewContacts}>Hide
+                <button style={{borderColor: isViewContacts ? 'red' : 'white'}} className={'buttonDefault'}
+                        onClick={onViewContacts}>Hide
                     contacts</button> :
-                <button className={'buttonDefault'} onClick={applyViewContacts}>Show
+                <button className={'buttonDefault'} onClick={onViewContacts}>Show
                     contacts</button>
         }
 
         {isViewContacts && <div className={style.contactsMenu}>
             {Object.keys(profileData.contacts).map(key => {
-                return <div key={key}><b>{key}:</b> {profileData.contacts[key] ? <a href={profileData.contacts[key]}>{profileData.contacts[key]}</a> : 'No link!'}</div>
+                return <div key={key}><b>{key}:</b> {profileData.contacts[key] ?
+                    <a href={profileData.contacts[key]}>{profileData.contacts[key]}</a> : 'No link!'}</div>
             })}
         </div>}
+
+        {!isChatting && (authLogin !== profileData.fullName && authLogin !== null) && <button
+            onClick={() => startChattingUserByIdThunkCreator(profileData.userId)}
+            className={'buttonDefault'}
+        >Start chatting</button>}
     </div>
 }
 

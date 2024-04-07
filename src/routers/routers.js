@@ -1,11 +1,11 @@
 import App from "../App";
 import Profile from "../components/Profile/Profile";
-import DialogsContainer from "../components/Dialogs/DialogsContainer";
 import News from "../components/News/News";
 import Music from "../components/Music/Music";
 import Settings from "../components/Settings/Settings";
 import React from "react";
 import Loader from "../components/Loader/Loader";
+import DialogsContainer from "../components/Dialogs/DialogsContainer";
 
 const LoginCotainer = React.lazy(() => import("../components/Login/LoginContainer"))
 const UsersContainer = React.lazy(() => import("../components/Users/UsersContainer"))
@@ -25,8 +25,12 @@ export const routers = () => {
                     element: <Profile />,
                 },
                 {
-                    path: '/messages/*',
-                    element: <DialogsContainer />,
+                    path: '/dialogs/*',
+                    element: <DialogsContainer />
+                },
+                {
+                    path: '/dialogs/:dialogId/*',
+                    element: <DialogsContainer />
                 },
                 {
                     path: '/news/*',

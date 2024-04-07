@@ -4,7 +4,7 @@ import styles from './FormElement.module.scss'
 const FormElement = (props) => {
     const {children, meta} = props
     return <div className={styles.body}>
-        <div className={styles.body__textArea}>
+        <div>
             {children}
         </div>
         <div className={styles.body__messageSpan}>
@@ -14,9 +14,9 @@ const FormElement = (props) => {
 }
 
 export const TextArea = ({input, ...props}) => {
-    return <FormElement {...props} ><textarea {...input} {...props} /></FormElement>
+    return <FormElement {...props} ><textarea className={'textareaDefault'} {...input} {...props} /></FormElement>
 }
 
 export const Input = ({input, ...props}) => {
-    return <FormElement {...props} ><input {...input} {...props} /></FormElement>
+    return <FormElement {...props} ><input className={'inputDefault'} {...input} {...props} /></FormElement>
 }

@@ -19,7 +19,18 @@ export const getIsLoadesAuthState = state => {
     return state.AuthData.isLoadesAuth
 }
 
-//MessagesSlice
+//DialogsSlice
+export const getDialogsSelector = state => {
+    return state.DialogsPage.dialogs
+}
+
+export const getIsLoaderDialogsPageSelector = state => {
+    return state.DialogsPage.isLoaderDialogsPage
+}
+
+export const getMessagesUserByIdSelector = state => {
+    return state.DialogsPage.messages
+}
 
 //ProfileSlice
 export const getPostDataState = state => {
@@ -39,6 +50,9 @@ export const getStatusState = state => {
 }
 
 //UrlSlice
+export const getUrlDataSelector = state => {
+    return state.urlData
+}
 
 //UsersSlice
 export const getUsersState = state => {

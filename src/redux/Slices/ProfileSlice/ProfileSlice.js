@@ -4,16 +4,11 @@ import {modifyArray} from "../../../Utils/modifyArray/modifyArray";
 const ProfileSlice = createSlice({
     name: 'profilePage',
     initialState: {
-        //Post Storage
-        postData: [],
-        //Is profile page loading?
-        isLoadesProfile: false,
-        //Profile data
-        profileData: null,
-        //Status user
-        statusData: 'No status!',
-        //This is id authorized user? or id other user?
-        urlIdOrUserId: null
+        postData: [], //Post Storage
+        isLoadesProfile: false, //Is profile page loading?
+        profileData: null, //Profile data
+        statusData: 'No status!', //Status user
+        urlIdOrUserId: null //This is ID authorized user? or ID other user?
     },
     reducers: {
         //Installs id authorized user or id other user
