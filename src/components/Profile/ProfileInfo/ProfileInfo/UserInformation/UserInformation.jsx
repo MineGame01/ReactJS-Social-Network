@@ -8,7 +8,7 @@ const UserInformation = ({authLogin, profileData, putStatusDataThunkCreator, sta
             className={style.fullName}
         >{profileData.fullName ? profileData.fullName : 'No name'}</div>
 
-        <div><b>About me: </b>{profileData.aboutMe}</div>
+        <div><b>About me: </b>{profileData.aboutMe ? profileData.aboutMe : 'No about me'}</div>
 
         <StatusUserAndStatusEditor
             authLogin={authLogin}

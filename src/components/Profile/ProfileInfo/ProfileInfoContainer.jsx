@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {compose} from "redux";
 import {connect} from "react-redux";
@@ -8,14 +8,17 @@ import {
 } from "../../../redux/Slices/ProfileSlice/ProfileThunkCreator";
 import {WithAuthRedirect} from "../../../hoc/WithAuthRedirect";
 import {
-    getAuthDataState,
+    getAuthDataState, getDialogsSelector,
     getIsLoadesProfileState,
     getProfileDataState,
-    getStatusState
+    getStatusState,
 } from "../../../redux/Selectors/Selectors";
 import {useParams} from "react-router-dom";
 import Loader from "../../Loader/Loader";
 import {setUrlIdOrUserId} from "../../../redux/Slices/ProfileSlice/ProfileSlice";
+import {
+    startChattingUserByIdThunkCreator
+} from "../../../redux/Slices/DialogsSlice/DialogsSliceThunkCreator";
 
 const ProfileInfoContainer = props => {
     const {
@@ -23,38 +26,51 @@ const ProfileInfoContainer = props => {
         putStatusDataThunkCreator, putImageThunkCreator,
         putProfileDataThunkCreator, authLogin,
         getProfileDataThunkCreator, setUrlIdOrUserId,
-        userID
+        userID, isLoadesProfile, dialogs,
+        startChattingUserByIdThunkCreator,
     } = props
 
     const params = useParams()
-    useEffect(() => {
-        setUrlIdOrUserId({id: params.userId || userID})
-        getProfileDataThunkCreator()
-    }, [getProfileDataThunkCreator, params.userId, userID, setUrlIdOrUserId])
 
+    useEffect(() => {
+            setUrlIdOrUserId({id: params.userId || userID})
+            getProfileDataThunkCreator()
+        }, [
+            getProfileDataThunkCreator,
+            params.userId,
+            userID,
+            setUrlIdOrUserId,
+        ]
+    )
+
+    //if in dialogs there so dialog for is which equals id profile user, then return true
+    const [isChatting, isChattingEdit] = useState(dialogs && profileData && dialogs.some(element => element.id === profileData.userId))
+    useEffect(() => {
+        isChattingEdit(dialogs && profileData && dialogs.some(element => element.id === profileData.userId))
+    }, [dialogs, profileData]);
+
+    if (isLoadesProfile) return <Loader/>
     return <div>
-        {props.isLoadesProfile ? <Loader /> : <ProfileInfo
+        <ProfileInfo
             profileData={profileData}
             statusData={statusData}
             putStatusDataThunkCreator={putStatusDataThunkCreator}
             putImageThunkCreator={putImageThunkCreator}
             putProfileDataThunkCreator={putProfileDataThunkCreator}
             authLogin={authLogin}
-        />}
+            isChatting={isChatting}
+            startChattingUserByIdThunkCreator={startChattingUserByIdThunkCreator}
+        />
     </div>
 }
 
 const mapStateToProps = (state) => ({
-    //Getting value to the profile page loader
-    isLoadesProfile: getIsLoadesProfileState(state),
-    //Getting all data profile page
-    profileData: getProfileDataState(state),
-    //Getting status user
-    statusData: getStatusState(state),
-    //Getting id to the authorization user
-    userID: getAuthDataState(state).id,
-    //Getting the 'login' value of an authorized user
-    authLogin: getAuthDataState(state).login
+    isLoadesProfile: getIsLoadesProfileState(state), //Getting value to the profile page loader
+    profileData: getProfileDataState(state), //Getting all data profile page
+    statusData: getStatusState(state), //Getting status user
+    userID: getAuthDataState(state).id, //Getting id to the authorization user
+    authLogin: getAuthDataState(state).login, //Getting the 'login' value of an authorized user
+    dialogs: getDialogsSelector(state), //Getting all dialogs in the user
 })
 
 export default compose(
@@ -63,7 +79,8 @@ export default compose(
         putStatusDataThunkCreator,
         putImageThunkCreator,
         putProfileDataThunkCreator,
-        setUrlIdOrUserId
+        setUrlIdOrUserId,
+        startChattingUserByIdThunkCreator
     }),
     WithAuthRedirect
 )(ProfileInfoContainer)

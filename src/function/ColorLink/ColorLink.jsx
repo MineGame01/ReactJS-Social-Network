@@ -1,7 +1,7 @@
 import {Link, useMatch} from "react-router-dom";
 
 const ColorLink = ({to, children, ...props}) => {
-    const match = useMatch(to + '*');
+    const match = useMatch(to + '/*');
     return (<Link
         to={to}
         {...props}
