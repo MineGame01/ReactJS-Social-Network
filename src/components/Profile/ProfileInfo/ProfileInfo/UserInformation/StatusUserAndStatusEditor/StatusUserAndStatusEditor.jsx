@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import EditorModeFormRedux from "./StatusEditorForm/StatusEditorForm";
 import style from './StatusUserAndStatusEditor.module.scss'
 
-const StatusUserAndStatusEditor = ({authLogin, profileData, putStatusDataThunkCreator, statusData, ...props}) => {
+const StatusUserAndStatusEditor = ({isAuthUser, profileData, putStatusDataThunkCreator, statusData, ...props}) => {
     //Local state
     const [isEditStatus, isChangeModeStatusEdit] = useState(false)
 
@@ -20,13 +20,13 @@ const StatusUserAndStatusEditor = ({authLogin, profileData, putStatusDataThunkCr
     }
     return <div className={style.body}>
         <button
-            onClick={authLogin !== profileData.fullName ? null : applyEditModeStatus}
+            onClick={(isAuthUser && applyEditModeStatus) || null}
             className={style.body__helpButton}
         >
             <span
                 style={{
                     color: isEditStatus ? 'red' : 'white',
-                    cursor: authLogin !== profileData.fullName ? 'text' : 'pointer'
+                    cursor: isAuthUser ? 'pointer' : 'text'
                 }}
             ><b>Status: </b>{statusData}</span>
         </button>

@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import style from './ImageUserAndImageEditor.module.scss'
 import ImageEditorForm from "./ImageEditorForm/ImageEditorForm";
 
-const ImageUserAndImageEditor = ({authLogin, profileData, putImageThunkCreator, ...props}) => {
+const ImageUserAndImageEditor = ({isAuthUser, profileData, putImageThunkCreator, ...props}) => {
     //Local state
     const [isEditImage, isChangeModeImageEdit] = useState(false)
 
@@ -19,8 +19,8 @@ const ImageUserAndImageEditor = ({authLogin, profileData, putImageThunkCreator, 
 
     return <div className={style.body}>
         <button
-            onClick={authLogin !== profileData.fullName ? null : applyEditModeImage}
-            className={authLogin !== profileData.fullName ? null : style.buttonHover}
+            onClick={(isAuthUser && applyEditModeImage) || null}
+            className={(isAuthUser && style.buttonHover) || null}
         >
             <img
                 className={style.profileImg}

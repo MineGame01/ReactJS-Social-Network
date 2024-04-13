@@ -8,7 +8,7 @@ import UserContacts from "./UserContacts/UserContacts";
 const ProfileInfo = (props) => {
     const {
         profileData, putProfileDataThunkCreator,
-        authLogin, statusData,
+        isAuthUser, statusData,
         putImageThunkCreator, putStatusDataThunkCreator,
         isChatting, startChattingUserByIdThunkCreator
     } = props
@@ -17,26 +17,26 @@ const ProfileInfo = (props) => {
             <div className={Style.body}>
                 <div>
                     <ProfileEditor
-                        authLogin={authLogin}
+                        isAuthUser={isAuthUser}
                         profileData={profileData}
                         putProfileDataThunkCreator={putProfileDataThunkCreator}
                     />
 
                     <ImageUserAndImageEditor
-                        authLogin={authLogin}
+                        isAuthUser={isAuthUser}
                         profileData={profileData}
                         putImageThunkCreator={putImageThunkCreator}
                     />
 
                     <UserInformation
-                        authLogin={authLogin}
+                        isAuthUser={isAuthUser}
                         profileData={profileData}
                         putStatusDataThunkCreator={putStatusDataThunkCreator}
                         statusData={statusData}
                     />
 
                     <UserContacts
-                        authLogin={authLogin}
+                        isAuthUser={isAuthUser}
                         profileData={profileData}
                         isChatting={isChatting}
                         startChattingUserByIdThunkCreator={startChattingUserByIdThunkCreator}
