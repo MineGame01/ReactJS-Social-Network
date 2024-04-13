@@ -14,7 +14,7 @@ import {
     getStatusState,
 } from "../../../redux/Selectors/Selectors";
 import {useParams} from "react-router-dom";
-import Loader from "../../Loader/Loader";
+import Loader from "../../common/Loader/Loader";
 import {setUrlIdOrUserId} from "../../../redux/Slices/ProfileSlice/ProfileSlice";
 import {
     startChattingUserByIdThunkCreator

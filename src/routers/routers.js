@@ -4,7 +4,7 @@ import News from "../components/News/News";
 import Music from "../components/Music/Music";
 import Settings from "../components/Settings/Settings";
 import React from "react";
-import Loader from "../components/Loader/Loader";
+import Loader from "../components/common/Loader/Loader";
 import DialogsContainer from "../components/Dialogs/DialogsContainer";
 
 const ResponseErrorPage = React.lazy(() => import("../components/common/ResponseErrorPage/ResponseErrorPage"));

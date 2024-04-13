@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {InitilizationThunkCreator} from "./redux/Slices/AppSlice/AppThunkCreator";
-import Loader from "./components/Loader/Loader";
+import Loader from "./components/common/Loader/Loader";
 import {Outlet} from "react-router-dom";
 import './App.css'
 import NavbarContainer from "./components/Navbar/NavbarContainer";

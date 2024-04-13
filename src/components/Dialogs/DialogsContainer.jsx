@@ -12,7 +12,7 @@ import {
     getIsLoaderDialogsPageSelector,
     getMessagesUserByIdSelector
 } from "../../redux/Selectors/Selectors";
-import Loader from "../Loader/Loader";
+import Loader from "../common/Loader/Loader";
 import Messages from "./Messages/Messages";
 import {useNavigate, useParams} from "react-router-dom";
 import {compose} from "redux";

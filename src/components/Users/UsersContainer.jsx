@@ -6,7 +6,7 @@ import {
     getUserThunkCreator,
 } from '../../redux/Slices/UsersSlice/UsersThunkCreator'
 import Users from "./Users/Users";
-import Loader from "../Loader/Loader";
+import Loader from "../common/Loader/Loader";
 import SearchInput from "./SearchInput/SearchInput";
 import PageNumberLent from "./PageNumber/PageNumberLent";
 import {
