@@ -7,8 +7,9 @@ import React from "react";
 import Loader from "../components/Loader/Loader";
 import DialogsContainer from "../components/Dialogs/DialogsContainer";
 
-const LoginContainer = React.lazy(() => import("../components/Login/LoginContainer"))
-const UsersContainer = React.lazy(() => import("../components/Users/UsersContainer"))
+const ResponseErrorPage = React.lazy(() => import("../components/common/ResponseErrorPage/ResponseErrorPage"));
+const LoginContainer = React.lazy(() => import("../components/Login/LoginContainer"));
+const UsersContainer = React.lazy(() => import("../components/Users/UsersContainer"));
 
 const withSuspense = Component => {
     const Suspense = props => {
@@ -59,12 +60,16 @@ export const routers = () => {
                 },
                 {
                     path: '/users/:pageNumber',
-                    element:  withSuspense(UsersContainer)
+                    element: withSuspense(UsersContainer)
                 },
                 {
                     path: '/login',
-                    element:  withSuspense(LoginContainer)
+                    element: withSuspense(LoginContainer)
                 },
+                {
+                    path: '/*',
+                    element: withSuspense(() => <ResponseErrorPage routerError={404}/>)
+                }
             ]
         }
     ]

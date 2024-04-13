@@ -1,5 +1,10 @@
+//AppSlice
 export const getInitilizationState = state => {
     return state.app.initilization
+}
+
+export const getGlobalErorrs = state => {
+    return state.app.globalErrors
 }
 
 //AuthSlice

@@ -18,7 +18,7 @@ import Loader from "../../Loader/Loader";
 import {setUrlIdOrUserId} from "../../../redux/Slices/ProfileSlice/ProfileSlice";
 import {
     startChattingUserByIdThunkCreator
-} from "../../../redux/Slices/DialogsSlice/DialogsSliceThunkCreator";
+} from "../../../redux/Slices/DialogsSlice/DialogsThunkCreator";
 
 const ProfileInfoContainer = props => {
     const {
