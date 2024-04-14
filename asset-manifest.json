@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/ReactJS-Social-Network/static/css/main.901a3af9.css",
-    "main.js": "/ReactJS-Social-Network/static/js/main.cc3fab32.js",
+    "main.css": "/ReactJS-Social-Network/static/css/main.5c51375e.css",
+    "main.js": "/ReactJS-Social-Network/static/js/main.3f2e6f37.js",
     "static/js/453.643dae02.chunk.js": "/ReactJS-Social-Network/static/js/453.643dae02.chunk.js",
     "static/css/646.47e0dfe7.chunk.css": "/ReactJS-Social-Network/static/css/646.47e0dfe7.chunk.css",
     "static/js/646.ed91210b.chunk.js": "/ReactJS-Social-Network/static/js/646.ed91210b.chunk.js",
     "static/css/415.6bb2e094.chunk.css": "/ReactJS-Social-Network/static/css/415.6bb2e094.chunk.css",
-    "static/js/415.21af80cb.chunk.js": "/ReactJS-Social-Network/static/js/415.21af80cb.chunk.js",
+    "static/js/415.f3b09587.chunk.js": "/ReactJS-Social-Network/static/js/415.f3b09587.chunk.js",
     "static/media/Spin-1s-200px.png": "/ReactJS-Social-Network/static/media/Spin-1s-200px.ce9ba859b19a0159a888.png",
     "index.html": "/ReactJS-Social-Network/index.html",
-    "main.901a3af9.css.map": "/ReactJS-Social-Network/static/css/main.901a3af9.css.map",
-    "main.cc3fab32.js.map": "/ReactJS-Social-Network/static/js/main.cc3fab32.js.map",
+    "main.5c51375e.css.map": "/ReactJS-Social-Network/static/css/main.5c51375e.css.map",
+    "main.3f2e6f37.js.map": "/ReactJS-Social-Network/static/js/main.3f2e6f37.js.map",
     "453.643dae02.chunk.js.map": "/ReactJS-Social-Network/static/js/453.643dae02.chunk.js.map",
     "646.47e0dfe7.chunk.css.map": "/ReactJS-Social-Network/static/css/646.47e0dfe7.chunk.css.map",
     "646.ed91210b.chunk.js.map": "/ReactJS-Social-Network/static/js/646.ed91210b.chunk.js.map",
     "415.6bb2e094.chunk.css.map": "/ReactJS-Social-Network/static/css/415.6bb2e094.chunk.css.map",
-    "415.21af80cb.chunk.js.map": "/ReactJS-Social-Network/static/js/415.21af80cb.chunk.js.map"
+    "415.f3b09587.chunk.js.map": "/ReactJS-Social-Network/static/js/415.f3b09587.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.901a3af9.css",
-    "static/js/main.cc3fab32.js"
+    "static/css/main.5c51375e.css",
+    "static/js/main.3f2e6f37.js"
   ]
 }
