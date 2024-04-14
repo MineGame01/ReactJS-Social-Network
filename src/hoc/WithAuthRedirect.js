@@ -1,8 +1,7 @@
 import React from 'react'
-import {Navigate} from "react-router-dom";
+import {Navigate, useParams} from "react-router-dom";
 import {connect} from "react-redux";
 import {compose} from "redux";
-import {WithRouter} from "./WithRouter";
 
 const mapStateToProps = state => {
     return {
@@ -12,8 +11,9 @@ const mapStateToProps = state => {
 
 export const WithAuthRedirect = (Component) => {
     const WithAuthRedirectToProps = (props) => {
+        const params = useParams();
         if (!props.isAuth) {
-            if (props.router.params.userId) {
+            if (params.userId) {
                 return <Component {...props} />
             } else {
                 return <Navigate to='/login' />
@@ -23,7 +23,6 @@ export const WithAuthRedirect = (Component) => {
     }
 
     return compose(
-        connect(mapStateToProps, {}),
-        WithRouter
+        connect(mapStateToProps, {})
     )(WithAuthRedirectToProps)
 }

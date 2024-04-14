@@ -3,7 +3,7 @@ import style from './UserContacts.module.scss'
 
 const UserContacts = (props) => {
     const {
-        profileData, authLogin,
+        profileData, isAuthUser,
         isChatting, startChattingUserByIdThunkCreator
     } = props
 
@@ -30,7 +30,7 @@ const UserContacts = (props) => {
             })}
         </div>}
 
-        {!isChatting && (authLogin !== profileData.fullName && authLogin !== null) && <button
+        {!isChatting && !isAuthUser && <button
             onClick={() => startChattingUserByIdThunkCreator(profileData.userId)}
             className={'buttonDefault'}
         >Start chatting</button>}

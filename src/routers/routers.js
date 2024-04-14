@@ -4,11 +4,21 @@ import News from "../components/News/News";
 import Music from "../components/Music/Music";
 import Settings from "../components/Settings/Settings";
 import React from "react";
-import Loader from "../components/Loader/Loader";
+import Loader from "../components/common/Loader/Loader";
 import DialogsContainer from "../components/Dialogs/DialogsContainer";
 
-const LoginCotainer = React.lazy(() => import("../components/Login/LoginContainer"))
-const UsersContainer = React.lazy(() => import("../components/Users/UsersContainer"))
+const ResponseErrorPage = React.lazy(() => import("../components/common/ResponseErrorPage/ResponseErrorPage"));
+const LoginContainer = React.lazy(() => import("../components/Login/LoginContainer"));
+const UsersContainer = React.lazy(() => import("../components/Users/UsersContainer"));
+
+const withSuspense = Component => {
+    const Suspense = props => {
+        return <React.Suspense fallback={<Loader/>}>
+            <Component {...props}/>
+        </React.Suspense>
+    }
+    return Suspense()
+}
 
 export const routers = () => {
     return [
@@ -46,22 +56,20 @@ export const routers = () => {
                 },
                 {
                     path: '/users/*',
-                    element: <React.Suspense fallback={<Loader />}>
-                        <UsersContainer />
-                    </React.Suspense>
+                    element: withSuspense(UsersContainer)
                 },
                 {
                     path: '/users/:pageNumber',
-                    element: <React.Suspense fallback={<Loader />}>
-                        <UsersContainer />
-                    </React.Suspense>
+                    element: withSuspense(UsersContainer)
                 },
                 {
                     path: '/login',
-                    element: <React.Suspense fallback={<Loader />}>
-                        <LoginCotainer />
-                    </React.Suspense>
+                    element: withSuspense(LoginContainer)
                 },
+                {
+                    path: '/*',
+                    element: withSuspense(() => <ResponseErrorPage routerError={404}/>)
+                }
             ]
         }
     ]

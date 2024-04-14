@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import EditorModeProfileForm from "./ProfileEditorForm/ProfileEditorForm";
 
-const ProfileEditor = ({authLogin, profileData, putProfileDataThunkCreator, ...props}) => {
+const ProfileEditor = ({isAuthUser, profileData, putProfileDataThunkCreator, ...props}) => {
     //Local state
     const [editorProfileMode, profileEditState] = useState(false)
 
@@ -10,7 +10,7 @@ const ProfileEditor = ({authLogin, profileData, putProfileDataThunkCreator, ...p
         putProfileDataThunkCreator({object})
     }
     return <div>
-        {authLogin === profileData.fullName &&
+        {isAuthUser &&
             <div style={{float: "right"}}>
                 {
                     editorProfileMode ?

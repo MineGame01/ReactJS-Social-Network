@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import Navbar from "./Navbar";
-import {getDialogsThunkCreator} from "../../redux/Slices/DialogsSlice/DialogsSliceThunkCreator";
+import {getDialogsThunkCreator} from "../../redux/Slices/DialogsSlice/DialogsThunkCreator";
 import {getIsAuthState, getUrlDataSelector} from "../../redux/Selectors/Selectors";
 
 const stateToProps = (state) => ({

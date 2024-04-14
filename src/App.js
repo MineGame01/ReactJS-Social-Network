@@ -2,14 +2,18 @@ import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {InitilizationThunkCreator} from "./redux/Slices/AppSlice/AppThunkCreator";
-import Loader from "./components/Loader/Loader";
+import Loader from "./components/common/Loader/Loader";
 import {Outlet} from "react-router-dom";
 import './App.css'
 import NavbarContainer from "./components/Navbar/NavbarContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import {getGlobalErorrs} from "./redux/Selectors/Selectors";
+import ResponseErrorPage from "./components/common/ResponseErrorPage/ResponseErrorPage";
 
 const App = (props) => {
-    const {InitilizationThunkCreator} = props
+    const {
+        InitilizationThunkCreator, globalErorrs
+    } = props
 
     useEffect(() => {
         InitilizationThunkCreator()
@@ -23,7 +27,7 @@ const App = (props) => {
             <HeaderContainer/>
             <NavbarContainer/>
             <div className={'app-wrapper-content'}>
-                <Outlet/>
+                {globalErorrs ? <ResponseErrorPage error={globalErorrs} /> : <Outlet/>}
             </div>
         </div>
     )
@@ -31,6 +35,7 @@ const App = (props) => {
 
 const mapStateToProps = state => ({
     initilization: state.app.initilization,
+    globalErorrs: getGlobalErorrs(state)
 })
 
 export default compose(

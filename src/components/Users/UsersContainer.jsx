@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {connect} from "react-redux";
 import {getPageNumber, getSearchText} from "../../redux/Slices/UsersSlice/UsersSlice";
 import {
@@ -6,7 +6,7 @@ import {
     getUserThunkCreator,
 } from '../../redux/Slices/UsersSlice/UsersThunkCreator'
 import Users from "./Users/Users";
-import Loader from "../Loader/Loader";
+import Loader from "../common/Loader/Loader";
 import SearchInput from "./SearchInput/SearchInput";
 import PageNumberLent from "./PageNumber/PageNumberLent";
 import {
@@ -16,77 +16,77 @@ import {
     getUsersState
 } from "../../redux/Selectors/Selectors";
 import {compose} from "redux";
-import {WithRouter} from "../../hoc/WithRouter";
+import {useParams} from "react-router-dom";
 
-class UsersClass extends React.Component {
-    componentDidMount() {
-        const {getUserThunkCreator, PageNumber, SearchText} = this.props
-        const urlPageNumber = this.props.router.params.pageNumber
-        getUserThunkCreator(urlPageNumber ? urlPageNumber : PageNumber, SearchText)
-    }
+const UsersClass = props => {
+    const {
+        getUserThunkCreator,
+        pageNumber, SearchText,
+        getPageNumber, getSearchText,
+        totalCount, countPage,
+        isLoades, users, isFollowing,
+        toggleFollowerStatus
+    } = props
 
-    updatePageNumber = e => {
-        const {getPageNumber, getUserThunkCreator, SearchText} = this.props
+    const params = useParams();
 
+    useEffect(() => {
+        const urlPageNumber = params.pageNumber
+        getUserThunkCreator(urlPageNumber ? urlPageNumber : pageNumber, SearchText);
+    }, []);
+
+    const updatePageNumber = e => {
         getPageNumber({number: e.target.value});
-        getUserThunkCreator(e.target.value, SearchText)
+        getUserThunkCreator(e.target.value, SearchText);
     }
 
-    updateSearchText = e => {
-        const {getSearchText, getUserThunkCreator, PageNumber} = this.props
-
+    const updateSearchText = e => {
         getSearchText({text: e.target.value});
-        getUserThunkCreator(PageNumber, e.target.value)
+        getUserThunkCreator(pageNumber, e.target.value);
     }
 
-    postPageNumber = number => {
-        const {getPageNumber, getUserThunkCreator, SearchText} = this.props
-
+    const postPageNumber = number => {
         getPageNumber({number: number});
-        getUserThunkCreator(number, SearchText)
+        getUserThunkCreator(number, SearchText);
     }
 
-    render() {
-        let NumberPage = Math.ceil(this.props.totalCount / this.props.countPage)
-        let PageNumber = []
-        for (let i = 1; i <= NumberPage; i++) {
-            PageNumber.push(i)
-        }
-        return (
-            <div>
-                <PageNumberLent
-                    NumberPage={NumberPage}
-                    PageNumber={PageNumber}
-                    PageNumberURL={this.props.PageNumber}
-                    postPageNumber={this.postPageNumber}
-                />
-                <SearchInput
-                    PageNumber={this.props.PageNumber}
-                    updatePageNumber={this.updatePageNumber}
-                    SearchText={this.props.SearchText}
-                    updateSearchText={this.updateSearchText}
-                />
-                {this.props.isLoades ? <Loader /> : <Users
-                    users={this.props.users}
-                    isFollowing={this.props.isFollowing}
-                    toggleFollowerStatus={this.props.toggleFollowerStatus}
-                />}
-            </div>
-        )
+    let NumberPage = Math.ceil(totalCount / countPage);
+    let PageNumber = []
+    for (let i = 1; i <= NumberPage; i++) {
+        PageNumber.push(i)
     }
+    return (
+        <div>
+            <PageNumberLent
+                NumberPage={NumberPage}
+                PageNumber={PageNumber}
+                PageNumberURL={pageNumber}
+                postPageNumber={postPageNumber}
+            />
+            <SearchInput
+                PageNumber={pageNumber}
+                updatePageNumber={updatePageNumber}
+                SearchText={SearchText}
+                updateSearchText={updateSearchText}
+            />
+            {isLoades ? <Loader /> : <Users
+                users={users}
+                isFollowing={isFollowing}
+                toggleFollowerStatus={toggleFollowerStatus}
+            />}
+        </div>
+    )
 }
 
-const mapstateToProps = (state) => {
-    return {
-        users: getUsersState(state),
-        PageNumber: getPageNumberState(state),
-        countPage: getCountPageState(state),
-        totalCount: getTotalCountState(state),
-        SearchText: getSearchTextState(state),
-        isLoades: getIsLoadesUsersState(state),
-        isFollowing: getIsFollowingState(state)
-    }
-}
+const mapstateToProps = (state) => ({
+    users: getUsersState(state),
+    pageNumber: getPageNumberState(state),
+    countPage: getCountPageState(state),
+    totalCount: getTotalCountState(state),
+    SearchText: getSearchTextState(state),
+    isLoades: getIsLoadesUsersState(state),
+    isFollowing: getIsFollowingState(state)
+})
 
 export default compose(
     connect(mapstateToProps, {
@@ -95,5 +95,4 @@ export default compose(
         getPageNumber,
         getSearchText
     }),
-    WithRouter
 )(UsersClass);

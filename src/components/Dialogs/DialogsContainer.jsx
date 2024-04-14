@@ -6,13 +6,13 @@ import {
     deleteMessageByIdThunkCreator,
     getDialogsThunkCreator,
     getMessagesByIdThunkCreator, sendMessageUserByIdThunkCreator
-} from "../../redux/Slices/DialogsSlice/DialogsSliceThunkCreator";
+} from "../../redux/Slices/DialogsSlice/DialogsThunkCreator";
 import {
     getDialogsSelector,
     getIsLoaderDialogsPageSelector,
     getMessagesUserByIdSelector
 } from "../../redux/Selectors/Selectors";
-import Loader from "../Loader/Loader";
+import Loader from "../common/Loader/Loader";
 import Messages from "./Messages/Messages";
 import {useNavigate, useParams} from "react-router-dom";
 import {compose} from "redux";
@@ -24,7 +24,6 @@ const DialogsContainer = (props) => {
         dialogs, messagesUserById, sendMessageUserByIdThunkCreator,
         deleteMessageByIdThunkCreator
     } = props
-
     const params = useParams()
     const navigate = useNavigate()
 
@@ -61,7 +60,7 @@ export default compose(
         getDialogsThunkCreator,
         getMessagesByIdThunkCreator,
         sendMessageUserByIdThunkCreator,
-        deleteMessageByIdThunkCreator
+        deleteMessageByIdThunkCreator,
     }),
-    WithAuthRedirect
+    WithAuthRedirect,
 )(DialogsContainer)

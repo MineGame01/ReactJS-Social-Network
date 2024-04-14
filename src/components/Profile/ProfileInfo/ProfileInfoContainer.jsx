@@ -14,17 +14,17 @@ import {
     getStatusState,
 } from "../../../redux/Selectors/Selectors";
 import {useParams} from "react-router-dom";
-import Loader from "../../Loader/Loader";
+import Loader from "../../common/Loader/Loader";
 import {setUrlIdOrUserId} from "../../../redux/Slices/ProfileSlice/ProfileSlice";
 import {
     startChattingUserByIdThunkCreator
-} from "../../../redux/Slices/DialogsSlice/DialogsSliceThunkCreator";
+} from "../../../redux/Slices/DialogsSlice/DialogsThunkCreator";
 
 const ProfileInfoContainer = props => {
     const {
         profileData, statusData,
         putStatusDataThunkCreator, putImageThunkCreator,
-        putProfileDataThunkCreator, authLogin,
+        putProfileDataThunkCreator,
         getProfileDataThunkCreator, setUrlIdOrUserId,
         userID, isLoadesProfile, dialogs,
         startChattingUserByIdThunkCreator,
@@ -57,7 +57,7 @@ const ProfileInfoContainer = props => {
             putStatusDataThunkCreator={putStatusDataThunkCreator}
             putImageThunkCreator={putImageThunkCreator}
             putProfileDataThunkCreator={putProfileDataThunkCreator}
-            authLogin={authLogin}
+            isAuthUser={profileData && userID === profileData.userId}
             isChatting={isChatting}
             startChattingUserByIdThunkCreator={startChattingUserByIdThunkCreator}
         />
@@ -69,7 +69,6 @@ const mapStateToProps = (state) => ({
     profileData: getProfileDataState(state), //Getting all data profile page
     statusData: getStatusState(state), //Getting status user
     userID: getAuthDataState(state).id, //Getting id to the authorization user
-    authLogin: getAuthDataState(state).login, //Getting the 'login' value of an authorized user
     dialogs: getDialogsSelector(state), //Getting all dialogs in the user
 })
 

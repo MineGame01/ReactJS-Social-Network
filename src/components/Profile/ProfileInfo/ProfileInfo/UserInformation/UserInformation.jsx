@@ -2,7 +2,7 @@ import React from 'react'
 import style from './UserInformation.module.scss'
 import StatusUserAndStatusEditor from "./StatusUserAndStatusEditor/StatusUserAndStatusEditor";
 
-const UserInformation = ({authLogin, profileData, putStatusDataThunkCreator, statusData, ...props}) => {
+const UserInformation = ({isAuthUser, profileData, putStatusDataThunkCreator, statusData, ...props}) => {
     return <div className={style.body}>
         <div
             className={style.fullName}
@@ -11,7 +11,7 @@ const UserInformation = ({authLogin, profileData, putStatusDataThunkCreator, sta
         <div><b>About me: </b>{profileData.aboutMe ? profileData.aboutMe : 'No about me'}</div>
 
         <StatusUserAndStatusEditor
-            authLogin={authLogin}
+            isAuthUser={isAuthUser}
             profileData={profileData}
             putStatusDataThunkCreator={putStatusDataThunkCreator}
             statusData={statusData}
