@@ -34,12 +34,12 @@ const UsersClass = props => {
         const urlPageNumber = params.pageNumber
         getUserThunkCreator(urlPageNumber ? urlPageNumber : pageNumber, SearchText);
     }, []);
-
+  
     const updatePageNumber = e => {
-        getPageNumber({number: e.target.value});
-        getUserThunkCreator(e.target.value, SearchText);
+        getPageNumber({number: e.target.value || 1});
+        getUserThunkCreator(e.target.value || 1, SearchText);
     }
-
+    
     const updateSearchText = e => {
         getSearchText({text: e.target.value});
         getUserThunkCreator(pageNumber, e.target.value);

@@ -11,6 +11,7 @@ const SearchInput = props => {
                 type="number"
                 value={PageNumber}
                 onChange={updatePageNumber}
+                min={1}
             />
         </div>
         <div>
