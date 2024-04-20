@@ -36,8 +36,8 @@ const UsersClass = props => {
     }, []);
 
     const updatePageNumber = e => {
-        getPageNumber({number: e.target.value});
-        getUserThunkCreator(e.target.value, SearchText);
+        getPageNumber({number: e.target.value || 1});
+        getUserThunkCreator(e.target.value || 1, SearchText);
     }
 
     const updateSearchText = e => {

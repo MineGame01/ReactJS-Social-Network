@@ -1,6 +1,6 @@
 import {UsersAPI} from "../../../api/UsersAPI";
 import {FollowerAPI} from "../../../api/FollowerAPI";
-import {setFollower, getData, getTotalCount, toFollowing, toLoades, deleteFollower} from "./UsersSlice";
+import {setFollower, getData, getTotalCount, toFollowing, toLoades, deleteFollower, inputToDefault} from "./UsersSlice";
 import {setGlobalError} from "../AppSlice/AppSlice";
 
 const startLoaderUsers = toLoades({boolean: true});
@@ -18,6 +18,7 @@ export const getUserThunkCreator = (PageNumber, SearchText) => async dispatch =>
     } catch (error) {
         dispatch(setGlobalError({error: error}));
         dispatch(stopLoaderUsers);
+        dispatch(inputToDefault());
     }
 }
 

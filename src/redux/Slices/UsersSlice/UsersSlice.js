@@ -54,6 +54,10 @@ const UsersSlice = createSlice({
             } else {
                 state.isFollowing = state.isFollowing.filter(id => id !== action.payload.userID)
             }
+        },
+        inputToDefault(state, action) {
+            state.PageNumber = 1
+            state.SearchText = ''
         }
     }
 })
@@ -66,6 +70,7 @@ export const {
     getPageNumber,
     getSearchText,
     toLoades,
-    toFollowing
+    toFollowing,
+    inputToDefault
 } = UsersSlice.actions
 export default UsersSlice.reducer
