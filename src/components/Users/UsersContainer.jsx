@@ -31,9 +31,10 @@ const UsersClass = props => {
     const params = useParams();
 
     useEffect(() => {
-        const urlPageNumber = params.pageNumber
-        getUserThunkCreator(urlPageNumber ? urlPageNumber : pageNumber, SearchText);
-    }, []);
+        const urlPageNumber = params.pageNumber;
+        getPageNumber({number: urlPageNumber || 1});
+        getUserThunkCreator(urlPageNumber || pageNumber, SearchText);
+    }, [params.pageNumber]);
   
     const updatePageNumber = e => {
         getPageNumber({number: e.target.value || 1});

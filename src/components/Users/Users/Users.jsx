@@ -7,6 +7,7 @@ const Users = ({users, isFollowing, ...props}) => {
             {
                 users.map(info => {
                     return <User
+                        key={info.id}
                         id={info.id}
                         img={info.photos.small}
                         followed={info.followed}
