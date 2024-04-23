@@ -1,46 +1,50 @@
 import React, {useState} from 'react'
-import ColorLink from "../../../../function/ColorLink/ColorLink";
 import style from './Dialog.module.scss'
-import {useNavigate} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 
 const Dialog = props => {
-    const {dialog} = props
+    const {dialogId, dialogPhotoSmall, dialogNewMessagesCount, dialogUserName} = props;
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
-    const [isOpen, isOpenEdit] = useState(false) //Local state
+    const [isOpenMenu, setIsOpenMenu] = useState(false);
 
-    const onChangeOpenMenu = event => { //Opening and closing menu
-        event.preventDefault() //Blocking browser menu default
-        if (event.button === 2 ) isOpenEdit(!isOpen) //Opening a menu by right-clicking
+    const openMenu = event => {
+        event.preventDefault();
+        if (event.button === 2) setIsOpenMenu(!isOpenMenu);
     }
 
-    const onClickToRedirectProfile = () => { //Clicking on dialogs, redirecting to the profile by ID
-        return navigate(`/profile/${dialog.id}`)
-    }
+    const redirectToProfile = () => navigate(`/profile/${dialogId}`);
+
+    const defaultImage = 'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg';
 
     return <div className={style.body} title={'Right click to open menu'}>
-        <div className={`${style.menu} ${isOpen && style.menuOpen}`}>
+        <div className={`${style.body__menu} ${isOpenMenu && style.body__menuOpen}`}>
             <button
                 className={'buttonDefault'}
-                onClick={onClickToRedirectProfile}
-            >Profile</button>
+                onClick={redirectToProfile}
+            >Profile
+            </button>
         </div>
-        <div onContextMenu={onChangeOpenMenu}>
-            <ColorLink
-                to={`/dialogs/${dialog.id}`}
-                className={style.dialog}
+        <div onContextMenu={openMenu}>
+            <NavLink
+                to={`/dialogs/${dialogId}`}
+                className={style.body__dialog}
+                style={({isActive}) => {
+                    return {
+                        color: isActive ? "red" : "white"
+                    }
+                }}
             >
-                <div className={style.image}>
+                <div className={style.body__dialog__image}>
                     <img
-                        src={dialog.photos.small || 'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg'}
-                        alt={dialog.photos.small || 'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg'}/>
-                    <div className={style.newMessagesCount}>
-                        {dialog.newMessagesCount}
-                    </div>
+                        src={dialogPhotoSmall || defaultImage}
+                        alt={dialogPhotoSmall || defaultImage}
+                    />
+                    <div className={style.body__dialog__image__newMessagesCount}>{dialogNewMessagesCount}</div>
                 </div>
-                {dialog.userName}
-            </ColorLink>
+                {dialogUserName}
+            </NavLink>
         </div>
     </div>
 }
