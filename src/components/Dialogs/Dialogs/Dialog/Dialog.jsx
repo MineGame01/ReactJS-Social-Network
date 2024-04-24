@@ -11,7 +11,7 @@ const Dialog = props => {
 
     const openMenu = event => {
         event.preventDefault();
-        if (event.button === 2) setIsOpenMenu(!isOpenMenu);
+        event.button === 2 && setIsOpenMenu(!isOpenMenu);
     }
 
     const redirectToProfile = () => navigate(`/profile/${dialogId}`);

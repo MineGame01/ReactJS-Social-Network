@@ -8,23 +8,22 @@ const Messages = (props) => {
         messagesUserById, deleteMessageByIdThunkCreator
     } = props
 
-    const sendMessage = value => { //Send message by message ID
-        sendMessageUserByIdThunkCreator(dialogId, value.newMessage)
+    const sendMessage = value => {
+        sendMessageUserByIdThunkCreator(dialogId, value.newMessage);
     }
 
     return <div>
-        {
-            dialogId && messagesUserById !== null && messagesUserById.map(message => {
-                return <Message
-                    key={message.id}
-                    dialogId={dialogId}
-                    message={message}
-                    deleteMessageByIdThunkCreator={deleteMessageByIdThunkCreator}/>
-            })
-        }
-        <div>
-            {dialogId && <MessagesForm onSubmit={sendMessage} />}
-        </div>
+        {dialogId && messagesUserById !== null && messagesUserById.map(message => {
+            return <Message
+                key={message.id}
+                dialogId={dialogId}
+                messageId={message.id}
+                messageSenderName={message.senderName}
+                messageValue={message.body}
+                deleteMessageByIdThunkCreator={deleteMessageByIdThunkCreator}
+            />
+        })}
+        <div>{dialogId && <MessagesForm onSubmit={sendMessage}/>}</div>
     </div>
 }
 

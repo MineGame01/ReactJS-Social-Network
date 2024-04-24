@@ -2,26 +2,27 @@ import React, {useState} from 'react'
 import style from './Message.module.scss'
 
 const Message = (props) => {
-    const {dialogId, message, deleteMessageByIdThunkCreator} = props
+    const {dialogId, messageValue, messageId, messageSenderName, deleteMessageByIdThunkCreator} = props
 
-    const [isOpen, setOpen] = useState(false) //Local state
+    const [isOpenMenu, setIsOpenMenu] = useState(false);
 
-    const onOpenMenu = event => { //Opening and closing menu
-        event.preventDefault() //Blocking browser menu default
-        event.button === 2 && setOpen(!isOpen) //Opening a menu by right-clicking
+    const openMenu = event => {
+        event.preventDefault();
+        event.button === 2 && setIsOpenMenu(!isOpenMenu);
     }
 
-    const deleteMessageById = () => {deleteMessageByIdThunkCreator(message.id, dialogId)} //Delete message by ID
+    const deleteMessageById = () => {
+        deleteMessageByIdThunkCreator(messageId, dialogId);
+    }
 
     return <div
-        key={message.id}
+        key={messageId}
         className={style.message}
-        onContextMenu={onOpenMenu}
+        onContextMenu={openMenu}
         title={'Right click to open menu'}
     >
-        <b>{message.senderName}: </b>
-        {message.body}
-        <div className={`${style.menu} ${isOpen && style.menuOpen}`}>
+        <div><b>{messageSenderName}: </b>{messageValue}</div>
+        <div className={`${style.menu} ${isOpenMenu && style.menuOpen}`}>
             <button onClick={deleteMessageById} className={'buttonDefault'}>Delete</button>
         </div>
     </div>
