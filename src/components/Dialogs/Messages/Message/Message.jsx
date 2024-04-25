@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import style from './Message.module.scss'
 
 const Message = (props) => {
-    const {dialogId, messageValue, messageId, messageSenderName, deleteMessageByIdThunkCreator} = props
+    const {dialogIdUrl, messageValue, messageId, messageSenderName, deleteMessageByIdThunkCreator} = props
 
     const [isOpenMenu, setIsOpenMenu] = useState(false);
 
@@ -12,7 +12,7 @@ const Message = (props) => {
     }
 
     const deleteMessageById = () => {
-        deleteMessageByIdThunkCreator(messageId, dialogId);
+        deleteMessageByIdThunkCreator(messageId, dialogIdUrl);
     }
 
     return <div

@@ -39,7 +39,7 @@ export const routers = () => {
                     element: <DialogsContainer />
                 },
                 {
-                    path: '/dialogs/:dialogId/*',
+                    path: '/dialogs/:dialogIdUrl/*',
                     element: <DialogsContainer />
                 },
                 {

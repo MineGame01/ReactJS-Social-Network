@@ -4,26 +4,26 @@ import Message from "./Message/Message";
 
 const Messages = (props) => {
     const {
-        dialogId, sendMessageUserByIdThunkCreator,
+        dialogIdUrl, sendMessageUserByIdThunkCreator,
         messagesUserById, deleteMessageByIdThunkCreator
     } = props
 
     const sendMessage = value => {
-        sendMessageUserByIdThunkCreator(dialogId, value.newMessage);
+        sendMessageUserByIdThunkCreator(dialogIdUrl, value.newMessage);
     }
 
     return <div>
-        {dialogId && messagesUserById !== null && messagesUserById.map(message => {
+        {dialogIdUrl && messagesUserById !== null && messagesUserById.map(message => {
             return <Message
                 key={message.id}
-                dialogId={dialogId}
+                dialogIdUrl={dialogIdUrl}
                 messageId={message.id}
                 messageSenderName={message.senderName}
                 messageValue={message.body}
                 deleteMessageByIdThunkCreator={deleteMessageByIdThunkCreator}
             />
         })}
-        <div>{dialogId && <MessagesForm onSubmit={sendMessage}/>}</div>
+        <div>{dialogIdUrl && <MessagesForm onSubmit={sendMessage}/>}</div>
     </div>
 }
 
